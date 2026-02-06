@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexure Inspector</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <header>
+        <h1>Nexure Inspector</h1>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                <!-- Simple SVG Icon -->
+                <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+            <div id="score-container" class="hidden">
+                <span id="score-label">Score:</span>
+                <span id="score-value">--</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="status-bar">
+            <p>Scanning: <span id="current-domain">...</span></p>
+        </div>
+
+        <div id="stats-summary">
+            <div class="stat-box critical" id="count-critical">0 <small>Critical</small></div>
+            <div class="stat-box high" id="count-high">0 <small>High</small></div>
+            <div class="stat-box medium" id="count-medium">0 <small>Medium</small></div>
+            <div class="stat-box low" id="count-low">0 <small>Low</small></div>
+        </div>
+
+        <div id="issues-list">
+            <!-- Loading Spinner -->
+            <div id="loading-state" class="loading-container">
+                <div class="spinner"></div>
+                <p class="loading-text">Scanning for security issues...</p>
+            </div>
+            <!-- Issues will be injected here -->
+        </div>
+    </main>
+
+    <footer>
+        <button id="clear-btn" class="secondary-btn">Clear History</button>
+        <a href="#" id="export-btn">Export Report</a>
+    </footer>
+
+    <script src="libs/jspdf.umd.min.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>
